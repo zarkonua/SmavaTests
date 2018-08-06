@@ -12,13 +12,13 @@ public class SmavaTests {
 
     @BeforeClass
     public static void prepare() throws InterruptedException {
-        System.setProperty("webdriver.chrome.driver", "webdriver/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
         home = new Home();
-        home.open();
     }
 
     @Test
     public void creditPageShouldBeLoaded() {
+        home.open();
         home.setCreditAmount();
         home.setCreditDuration();
         home.setCreditCategory();
@@ -32,6 +32,7 @@ public class SmavaTests {
 
     @Test
     public void loginErrorShouldBeDisplayedIfCredsAreIncorrect() {
+        home.open();
         String email = "sdafdf@i.ua";
         String password = "12345678";
         Login login = home.loginWithCreds(email, password);

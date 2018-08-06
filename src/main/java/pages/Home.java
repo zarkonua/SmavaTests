@@ -12,9 +12,8 @@ public class Home extends ParentPage {
     private static final String URl = "http://smava.de/v2";
     WebDriverWait wait = new WebDriverWait(driver, 30);
 
-    public void open() throws InterruptedException {
+    public void open() {
         open(URl);
-        wait.until(ExpectedConditions.titleIs("SMAVA - Das Online-Vergleichsportal für Kredite | SMAVA"));
     }
 
     public void setCreditAmount() {
