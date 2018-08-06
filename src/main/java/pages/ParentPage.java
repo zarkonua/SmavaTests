@@ -9,19 +9,19 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class Page {
+public class ParentPage {
 
     WebDriver driver;
     private WebDriverWait wait;
 
-    public Page() {
+    public ParentPage() {
         driver = new ChromeDriver();
         wait = new WebDriverWait(driver, 30);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
-    public Page(WebDriver driver) {
+    public ParentPage(WebDriver driver) {
         this.driver = driver;
     }
 
@@ -29,6 +29,9 @@ public class Page {
         driver.get(url);
     }
 
+    public void close() {
+        driver.close();
+    }
 
     protected WebElement $(String xpath, String... args) {
         return driver.findElement(By.xpath(String.format(xpath, args)));

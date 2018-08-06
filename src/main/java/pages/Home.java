@@ -7,7 +7,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.List;
 import java.util.Random;
 
-public class Home extends Page {
+public class Home extends ParentPage {
 
     private static final String URl = "http://smava.de/v2";
     WebDriverWait wait = new WebDriverWait(driver, 30);
@@ -45,7 +45,7 @@ public class Home extends Page {
         return new Credit(driver);
     }
 
-    public Login loginWithIncorrectCreds(String email, String password) {
+    public Login loginWithCreds(String email, String password) {
         $(By.xpath("//*[@id=\"root\"]/div/div/header/div/div/div[2]/nav/div[2]/div/span")).click();
         $(By.xpath("//*[@id=\"root\"]/div/div/header/div/div/div[2]/nav/div[2]/section/div/form/div[1]/div/input")).sendKeys(email);
         $(By.xpath("//*[@id=\"root\"]/div/div/header/div/div/div[2]/nav/div[2]/section/div/form/div[2]/div/input")).sendKeys(password);

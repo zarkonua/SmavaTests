@@ -3,7 +3,7 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class Credit extends Page {
+public class Credit extends ParentPage {
 
     public Credit(WebDriver driver) {
         super(driver);

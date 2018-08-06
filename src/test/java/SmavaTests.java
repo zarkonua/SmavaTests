@@ -34,8 +34,13 @@ public class SmavaTests {
     public void loginErrorShouldBeDisplayedIfCredsAreIncorrect() {
         String email = "sdafdf@i.ua";
         String password = "12345678";
-        Login login = home.loginWithIncorrectCreds(email, password);
-        login.fillInCredentials(email,password);
+        Login login = home.loginWithCreds(email, password);
+        login.fillInCredentials(email, password);
         assertThat(login.isErrorMessageDisplayed(), equalTo(true));
+    }
+
+    @AfterClass
+    public static void cleanUp() {
+        home.close();
     }
 }
