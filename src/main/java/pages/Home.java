@@ -18,9 +18,9 @@ public class Home extends ParentPage {
 
     public void setCreditAmount() {
         $(By.xpath("//*[@id=\"sticky-wrapper\"]/div[1]/div/div/div/div/div[1]/div/div/div/div")).click();
-        String creditSummExpression = "//*[@id=\"sticky-wrapper\"]/div[1]/div/div/div/div/div[1]/div/span/div/div/div[10]";
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(creditSummExpression)));
-        $(By.xpath(creditSummExpression)).click();
+        String creditAmountExpression = "//*[@id=\"sticky-wrapper\"]/div[1]/div/div/div/div/div[1]/div/span/div/div/div[10]";
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(creditAmountExpression)));
+        $(By.xpath(creditAmountExpression)).click();
     }
 
     public void setCreditDuration() {
@@ -40,7 +40,7 @@ public class Home extends ParentPage {
     public Credit chooseRandomOffer() {
         List<WebElement> offers = $$(By.xpath("//*[@id='sticky-wrapper']/div[3]/div/div/div[*]/div[1]/div[1]/div[6]/a/button"));
         Random random = new Random();
-        offers.get(random.nextInt(offers.size())).click();
+        offers.get(random.nextInt(offers.size() / 2)).click();
         return new Credit(driver);
     }
 
