@@ -1,54 +1,63 @@
 package pages;
 
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.util.List;
-import java.util.Random;
 
 public class Home extends ParentPage {
 
     private static final String URl = "http://smava.de/v2";
     WebDriverWait wait = new WebDriverWait(driver, 30);
 
+    public Home(WebDriver driver) {
+        super(driver);
+    }
+
     public void open() {
         open(URl);
     }
 
-    public void setCreditAmount() {
-        $(By.xpath("//*[@id=\"sticky-wrapper\"]/div[1]/div/div/div/div/div[1]/div/div/div/div")).click();
-        String creditAmountExpression = "//*[@id=\"sticky-wrapper\"]/div[1]/div/div/div/div/div[1]/div/span/div/div/div[10]";
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(creditAmountExpression)));
-        $(By.xpath(creditAmountExpression)).click();
+    public WebElement getCreditAmountDropDown() {
+        return $(By.xpath("//*[@id=\"sticky-wrapper\"]/div[1]/div/div/div/div/div[1]/div/div/div/div"));
     }
 
-    public void setCreditDuration() {
-        $(By.xpath("//*[@id=\"sticky-wrapper\"]/div[1]/div/div/div/div/div[2]/div/div/div/div")).click();
-        String creditPeriodExpression = "//*[@id=\"sticky-wrapper\"]/div[1]/div/div/div/div/div[2]/div/span/div/div/div[2]";
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(creditPeriodExpression)));
-        $(By.xpath(creditPeriodExpression)).click();
+    public WebElement chooseCreditAmount() {
+        return $(By.xpath("//*[@id=\"sticky-wrapper\"]/div[1]/div/div/div/div/div[1]/div/span/div/div/div[10]"));
     }
 
-    public void setCreditCategory() {
-        $(By.xpath("//*[@id=\"sticky-wrapper\"]/div[1]/div/div/div/div/div[3]/div/div/div/div")).click();
-        String creditPurposeExpression = "//*[@id=\"sticky-wrapper\"]/div[1]/div/div/div/div/div[3]/div/span/div/div/div[3]";
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(creditPurposeExpression)));
-        $(By.xpath(creditPurposeExpression)).click();
+    public WebElement getCreditDurationDropDown() {
+        return $(By.xpath("//*[@id=\"sticky-wrapper\"]/div[1]/div/div/div/div/div[2]/div/div/div/div"));
     }
 
-    public Credit chooseRandomOffer() {
-        List<WebElement> offers = $$(By.xpath("//*[@id='sticky-wrapper']/div[3]/div/div/div[*]/div[1]/div[1]/div[6]/a/button"));
-        Random random = new Random();
-        offers.get(random.nextInt(offers.size() / 2)).click();
-        return new Credit(driver);
+    public WebElement chooseCreditDuration() {
+        return $(By.xpath("//*[@id=\"sticky-wrapper\"]/div[1]/div/div/div/div/div[2]/div/span/div/div/div[2]"));
     }
 
-    public Login loginWithCreds(String email, String password) {
-        $(By.xpath("//*[@id=\"root\"]/div/div/header/div/div/div[2]/nav/div[2]/div/span")).click();
-        $(By.xpath("//*[@id=\"root\"]/div/div/header/div/div/div[2]/nav/div[2]/section/div/form/div[1]/div/input")).sendKeys(email);
-        $(By.xpath("//*[@id=\"root\"]/div/div/header/div/div/div[2]/nav/div[2]/section/div/form/div[2]/div/input")).sendKeys(password);
-        $(By.xpath("//*[@id=\"root\"]/div/div/header/div/div/div[2]/nav/div[2]/section/div/form/button")).click();
-        return new Login(driver);
+    public WebElement getCreditCategoryDropDown() {
+        return $(By.xpath("//*[@id=\"sticky-wrapper\"]/div[1]/div/div/div/div/div[3]/div/div/div/div"));
+    }
+
+    public WebElement chooseCreditCategory() {
+        return $(By.xpath("//*[@id=\"sticky-wrapper\"]/div[1]/div/div/div/div/div[3]/div/span/div/div/div[3]"));
+    }
+
+    public List<WebElement> getCreditOffers() {
+        return $$(By.xpath("//*[@id='sticky-wrapper']/div[3]/div/div/div[*]/div[1]/div[1]/div[6]/a/button"));
+    }
+
+    public WebElement getLoginButton() {
+        return $(By.xpath("//*[@id=\"root\"]/div/div/header/div/div/div[2]/nav/div[2]/div/span"));
+    }
+
+    public WebElement getEmailInput() {
+        return $(By.xpath("//*[@id=\"root\"]/div/div/header/div/div/div[2]/nav/div[2]/section/div/form/div[1]/div/input"));
+    }
+
+    public WebElement getPasswordInput() {
+        return $(By.xpath("//*[@id=\"root\"]/div/div/header/div/div/div[2]/nav/div[2]/section/div/form/div[2]/div/input"));
+    }
+
+    public WebElement getSubmitButton() {
+        return $(By.xpath("//*[@id=\"root\"]/div/div/header/div/div/div[2]/nav/div[2]/section/div/form/button"));
     }
 }
